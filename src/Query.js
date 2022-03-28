@@ -3,15 +3,17 @@ const githubQuery = {
     {
       viewer{
         name
-        repositories(first:10){
-            nodes{
-                name
-                description
-                id
-                url
-            }
-        }
       }
+        search(query:"user:prabhjyotsinghgill sort:updated-desc", type: REPOSITORY, first:10 ){
+          nodes{
+            ... on Repository{
+              name
+              description
+              id 
+              url    
+            }
+          }
+        }
     }
     `,
  };
